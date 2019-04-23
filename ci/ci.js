@@ -17,6 +17,7 @@
 const e = require('child_process');
 const fs = require('fs');
 const path = require('path')
+const crypto = require('crypto');
 
 module.exports = class CI {
 
@@ -246,6 +247,16 @@ module.exports = class CI {
     writeFile(fileName, content) {
         console.log(`// Write to file ${fileName}`);
         fs.writeFileSync(fileName, content, { 'encoding': 'utf8' });
+    }
+
+    /**
+     * Returns a truncated md5 hash of the given data with the given length.
+     */
+    hash(data, length) {
+        return crypto.createHash('md5')
+            .update(data)
+            .digest("hex")
+            .substring(0, length);
     }
 
 };

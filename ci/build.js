@@ -46,7 +46,7 @@ if ("test-it" in pkg.scripts && process.env.CORE_WSK_AUTH_STRING) {
 
     let branch = process.env.CIRCLE_BRANCH.replace(/[\W_]+/g, "") || 'release';
     let buildNum = process.env.CIRCLE_BUILD_NUM.replace(/[\W_]+/g, "");
-    process.env.OW_PACKAGE_SUFFIX = `magento-${branch}-${buildNum}`;
+    process.env.OW_PACKAGE_SUFFIX = ci.hash(`magento-${branch}-${buildNum}`, 10);
 
     try {
         // Fix serverless permissions
