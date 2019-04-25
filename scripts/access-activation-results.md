@@ -1,0 +1,2 @@
+1. To retrieve a table of activation ids (first column) and action names (second column), run `wsk activation list`. Optionally, using the `--help` parameter, you see an overview of additional parameters to further filter and expand the list.
+1. To see the meta data of a specific action invocation from the given list, use `wsk activation get ACTIVATION-ID`. This command will return a formatted JSON response that contains data like duration, response and others.
